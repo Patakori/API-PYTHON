@@ -2,7 +2,7 @@ import pytest
 from sqlalchemy.engine import Engine
 from .connection import db_connection_handler
 
-@pytest.mark.skip(reason="Verify connection with db")
+@pytest.mark.skip(reason="Verify connection with database")
 def test_connect_to_db():
     assert db_connection_handler.get_engine() is None
 
