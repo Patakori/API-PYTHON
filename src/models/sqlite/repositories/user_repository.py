@@ -1,8 +1,9 @@
 from sqlalchemy.orm.exc import NoResultFound
+from src.models.sqlite.interfaces.user_repository_interface import UserInterface
 from src.models.sqlite.entities.user import UserTable
 
 
-class UserRepository:
+class UserRepository(UserInterface):
     def __init__(self, db_connection) -> None:
         self.__db_connection = db_connection
 
