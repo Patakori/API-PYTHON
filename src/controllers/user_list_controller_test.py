@@ -1,30 +1,31 @@
-from sqlalchemy import BIGINT
 from src.models.sqlite.entities.user import UserTable
 from .user_list_controller import UserListController
 
 class MockUserRepository:
-    def list_user(self, user_id: BIGINT, name: str, email: str) -> list[UserTable]:
-        return {
-            "id": user_id,
-            "name": name,
-            "email": email
-        }
+    def list_user(self) -> list[UserTable]:
+        return [
+            {
+                "id": '1',
+                "name": 'Dilsones',
+                "email": 'Dilsones@gmail.com'
+            }
+        ]
 
 
 def test_list():
     controller = UserListController(MockUserRepository())
-    user_info = {"id": 1, "name": "Test User", "email": "test@example.com"}
-    response = controller.list(user_info)
+    response = controller.list()
 
     # Verificação do tipo de retorno
-    assert isinstance(response, dict)
+    assert isinstance(response, list)
 
     # Verificação dos valores retornados no dicionário
-    assert response["id"] == user_info["id"]
-    assert response["name"] == user_info["name"]
-    assert response["email"] == user_info["email"]
+    user_data = response[0]
+    assert user_data["id"] == "1"
+    assert user_data["name"] == "Dilsones"
+    assert user_data["email"] == "Dilsones@gmail.com"
 
     # Verificação de chaves no dicionário
-    assert "id" in response
-    assert "name" in response
-    assert "email" in response
+    assert "id" in user_data
+    assert "name" in user_data
+    assert "email" in user_data
