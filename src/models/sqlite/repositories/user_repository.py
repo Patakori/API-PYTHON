@@ -11,6 +11,7 @@ class UserRepository(UserInterface):
         with self.__db_connection as database:
             try:
                 users = database.session.query(UserTable).all()
+                # return [user.to_dict() for user in users]
                 return users
             except NoResultFound:
                 return []

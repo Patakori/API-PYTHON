@@ -10,3 +10,10 @@ class UserTable(Base):
 
     def __repr__(self):
         return f"User [name={self.name}, email={self.type}]"
+
+    # def to_dict(self):
+    #     return {
+    #         "id": self.id,
+    #         "name": self.name,
+    #         "email": self.email,
+    #     }
