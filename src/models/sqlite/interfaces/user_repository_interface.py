@@ -9,5 +9,9 @@ class UserInterface(ABC):
         pass
 
     @abstractmethod
+    def create_user(self, new_user: dict) -> dict:
+        pass
+
+    @abstractmethod
     def delete_user(self, email: str) -> list[UserTable]:
         pass

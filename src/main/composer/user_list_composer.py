@@ -9,4 +9,3 @@ def user_list_composer():
     view = ListUsersView(controller)
 
     return view
-

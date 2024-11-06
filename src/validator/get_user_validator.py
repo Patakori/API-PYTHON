@@ -8,6 +8,7 @@ def get_user_validator(http_request: HttpRequest) -> None:
         email: constr(min_length=1) # type: ignore
 
     try:
-        BodyData(**http_request.body)
+        validated_data = BodyData(**http_request).model_dump()
+        return validated_data
     except ValidationError as e:
         raise HttpUnprocessableEntityError from e
